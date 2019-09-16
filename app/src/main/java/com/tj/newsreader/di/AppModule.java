@@ -1,5 +1,12 @@
 package com.tj.newsreader.di;
 
+import android.app.Application;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
 import com.tj.newsreader.util.Constants;
 
 import javax.inject.Singleton;
@@ -10,8 +17,10 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
-@Module
 
+//Al dependencies that are used throughout the lifespan of the application
+
+@Module
 public class AppModule {
 
     @Singleton
@@ -24,6 +33,20 @@ public class AppModule {
                 .build();
 
 
+    }
+    @Singleton
+    @Provides
+    static RequestOptions provideRequestOptions(){
+        return RequestOptions.placeholderOf(new ColorDrawable(Color.WHITE))
+                .error(new ColorDrawable(Color.RED));
+
+    }
+
+    @Singleton
+    @Provides
+    static RequestManager provideGlideInstance(Application application, RequestOptions requestOptions){
+        return Glide.with(application)
+                .setDefaultRequestOptions(requestOptions);
     }
 
 

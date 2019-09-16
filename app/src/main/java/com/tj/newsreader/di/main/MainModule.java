@@ -10,6 +10,13 @@ import retrofit2.Retrofit;
 public abstract class MainModule {
 
     @Provides
+    static MainRecyclerViewAdapter provideAdapter(){
+        return new MainRecyclerViewAdapter();
+
+    }
+
+
+    @Provides
     static MainApi provideMainApi(Retrofit retrofit){
         return retrofit.create(MainApi.class);
 

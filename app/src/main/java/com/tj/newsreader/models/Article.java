@@ -2,75 +2,58 @@ package com.tj.newsreader.models;
 
 import com.squareup.moshi.Json;
 
+import java.util.List;
 
 
 public class Article {
 
+//name,title,description,Image
 
 
+    @Json(name = "status")
+    private String status;
+    @Json(name = "totalResults ")
+    private int totalResults;
+    @Json(name = "articles")
+    private List<NewsArticle> articles = null;
 
-    @Json(name = "Author") String name;
-    @Json(name = "Title ") String title;
-    @Json(name = "Description") String Description;
-    @Json(name = "Image") String Image;
+    public String getStatus() {
+        return status;
+    }
 
-    public Article(String name, String title, String Description, String Image){
-
-        this.name = name;
-        this.title = title;
-        this.Description = Description;
-        this.Image = Image;
+    public void setStatus(String status) {
+        this.status = status;
 
     }
 
-    public String getName() {
-        return name;
+    public Integer getTotalResults() {
+        return totalResults;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTotalResults(Integer totalResults) {
+        this.totalResults = totalResults;
     }
 
-    public String getTitle() {
-        return title;
+    public List<NewsArticle> getArticles() {
+        return articles;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setArticles() {
+        setArticles();
     }
 
-    public String getDescription() {
-        return Description;
+    public void setArticles(List<NewsArticle> articles) {
+        this.articles = articles;
     }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getImage() {
-        return Image;
-    }
-
-    public void setImage(String image) {
-        Image = image;
-    }
-
-    public Article(){
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
